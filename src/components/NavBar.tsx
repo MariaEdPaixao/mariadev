@@ -10,7 +10,16 @@ export default function NavBar() {
   const itensMenu = ["SOBRE MIM", "SKILLS", "PROJETOS"]
 
   useEffect(() => {
+    const temaSalvo = localStorage.getItem("temaEscuro")
+    if (temaSalvo === "true") {
+      setTemaEscuro(true)
+      document.documentElement.classList.add("dark")
+    }
+  }, [])
+
+  useEffect(() => {
     document.documentElement.classList.toggle("dark", temaEscuro)
+    localStorage.setItem("temaEscuro", String(temaEscuro))
   }, [temaEscuro])
 
   const alternarTema = () => setTemaEscuro(!temaEscuro)
