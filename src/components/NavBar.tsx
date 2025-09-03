@@ -1,28 +1,14 @@
-'use client'
-import { useState, useEffect } from "react"
+"use client"
+import { useState } from "react"
 import Image from "next/image"
 import logo from "../app/img/logo.svg"
 import { FiMenu, FiX } from "react-icons/fi"
+import ThemeToggle from "./ThemeToggle"
 
 export default function NavBar() {
-  const [temaEscuro, setTemaEscuro] = useState(false)
   const [menuAberto, setMenuAberto] = useState(false)
   const itensMenu = ["SOBRE MIM", "SKILLS", "PROJETOS"]
 
-  useEffect(() => {
-    const temaSalvo = localStorage.getItem("temaEscuro")
-    if (temaSalvo === "true") {
-      setTemaEscuro(true)
-      document.documentElement.classList.add("dark")
-    }
-  }, [])
-
-  useEffect(() => {
-    document.documentElement.classList.toggle("dark", temaEscuro)
-    localStorage.setItem("temaEscuro", String(temaEscuro))
-  }, [temaEscuro])
-
-  const alternarTema = () => setTemaEscuro(!temaEscuro)
   const alternarMenu = () => setMenuAberto(!menuAberto)
 
   return (
@@ -40,10 +26,7 @@ export default function NavBar() {
       {/* Menu Desktop */}
       <ul className="hidden md:flex text-white gap-12">
         {itensMenu.map((item) => (
-          <li
-            key={item}
-            className="cursor-pointer relative group"
-          >
+          <li key={item} className="cursor-pointer relative group">
             {item}
             <span className="absolute left-0 -bottom-1 w-0 h-[2px] bg-white transition-all duration-300 group-hover:w-full"></span>
           </li>
@@ -51,45 +34,28 @@ export default function NavBar() {
       </ul>
 
       {/* Toggle Tema - Desktop */}
-      <div className="hidden md:flex items-center text-white gap-2">
-        <div
-          onClick={alternarTema}
-          className={`w-14 h-8 flex items-center rounded-full p-1 cursor-pointer transition-colors duration-300
-            ${temaEscuro ? 'bg-gray-600' : 'bg-gray-400'}`}
-        >
-          <div
-            className={`bg-white w-6 h-6 rounded-full shadow-md transform transition-transform duration-300
-              ${temaEscuro ? 'translate-x-6' : 'translate-x-0'}`}
-          />
-        </div>
-        <p>{temaEscuro ? "Escuro" : "Claro"}</p>
+      <div className="hidden md:flex">
+        <ThemeToggle />
       </div>
 
-      <div className={`fixed inset-0 bg-gradient-to-r from-black/95 to-[#335BA0]/95 backdrop-blur-md 
-  flex flex-col justify-center items-center gap-8 text-white text-2xl transition-transform duration-500
-  ${menuAberto ? "translate-x-0" : "translate-x-full"} md:hidden`}>
-
+      {/* Menu Mobile */}
+      <div
+        className={`fixed inset-0 bg-gradient-to-r from-black/95 to-[#335BA0]/95 backdrop-blur-md 
+          flex flex-col justify-center items-center gap-8 text-white text-2xl transition-transform duration-500
+          ${menuAberto ? "translate-x-0" : "translate-x-full"} md:hidden`}
+      >
         {itensMenu.map((item) => (
-          <p key={item} className="cursor-pointer hover:scale-110 transition-transform duration-300">{item}</p>
+          <p
+            key={item}
+            className="cursor-pointer hover:scale-110 transition-transform duration-300"
+          >
+            {item}
+          </p>
         ))}
 
-        {/* Toggle tema no mobile */}
-        <div className="flex items-center text-white gap-2 mt-8">
-          <div
-            onClick={alternarTema}
-            className={`w-14 h-8 flex items-center rounded-full p-1 cursor-pointer transition-colors duration-300
-        ${temaEscuro ? 'bg-gray-600' : 'bg-gray-400'}`}
-          >
-            <div
-              className={`bg-white w-6 h-6 rounded-full shadow-md transform transition-transform duration-300
-          ${temaEscuro ? 'translate-x-6' : 'translate-x-0'}`}
-            />
-          </div>
-          <p>{temaEscuro ? "Escuro" : "Claro"}</p>
-        </div>
+        {/* Toggle Tema - Mobile */}
+        <ThemeToggle mobile />
       </div>
-
-
     </nav>
   )
 }
