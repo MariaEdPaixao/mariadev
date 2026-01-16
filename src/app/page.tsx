@@ -1,4 +1,9 @@
+"use client"
+
+import AboutMe from "@/components/about-me";
 import Banner from "@/components/Banner";
+import { DownloadCV } from "@/components/download-cv";
+import HardSkills from "@/components/hardskills";
 import NavBar from "@/components/NavBar";
 
 export default function Home() {
@@ -6,11 +11,12 @@ export default function Home() {
     <div>
       <NavBar />
       <Banner/>
-      <div className="px-15 py-12">
-        <div id="sobre">
-          <p>Sobre mim</p>
-          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Tenetur illum totam cupiditate exercitationem, adipisci optio ad numquam rem iste quibusdam odio in perferendis expedita quasi molestiae deleniti neque accusantium omnis.</p>
+      <div className="p-12">
+        <div className=" flex flex-col justify-center items-center">
+          <AboutMe/>
+          <DownloadCV/>
         </div>
+        <HardSkills/>
       </div>
     </div>
   );

@@ -73,7 +73,7 @@ export default function Banner() {
             </div>
             <div
                 onClick={() => {
-                    const section = document.getElementById("sobre")
+                    const section = document.getElementById("sobre-mim")
                     section?.scrollIntoView({ behavior: "smooth" })
                 }}
                 className="flex justify-center items-center bg-[#244070] w-[40px] h-[40px] rounded-full mt-12 cursor-pointer animate-bounce transition duration-300 hover:scale-110"
