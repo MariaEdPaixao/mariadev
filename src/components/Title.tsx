@@ -1,12 +1,18 @@
+"use client"
+
+import { useTheme } from "@/context/ThemeContext";
+
 interface TitleProps {
   title: string;
 }
 
 export default function Title(props: TitleProps) {
+  const { temaEscuro } = useTheme();
+
   return (
-    <div className="flex flex-col gap-2.5">
-      <h2 className="text-[36px] text-black font-bold">{props.title}</h2>
-      <hr className="border-[#244070] w-80 self-center md:self-start" />
+    <div className="flex flex-col gap-2">
+      <h2 className={`text-3xl ${temaEscuro? "text-[#6089CE]" : "text-black" } font-bold`}>{props.title}</h2>
+      <div className="bg-[#244070] w-20 h-1"></div>
     </div>
   );
 }
