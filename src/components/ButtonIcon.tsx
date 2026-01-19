@@ -25,7 +25,7 @@ export default function ButtonIcon({ title, onClick, icon }: ButtonIconProps) {
             "
         >
             <span className="text-lg">{icon}</span>
-            <span>{title}</span>
+            <span className="text-[12px] md:text-[16px]">{title}</span>
         </button>
     );
 }
