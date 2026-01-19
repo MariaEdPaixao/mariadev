@@ -5,6 +5,10 @@ import { useTheme } from "@/context/ThemeContext";
 import { iconMap } from "./iconMap";
 import { AreasProps } from "../aboutTypes";
 
+//img c#
+import IconCSharpWhite from "@/assets/icon-csharp-white.png"
+import IconCSharpGray from "@/assets/icon-csharp-gray.png"
+
 export default function CardLinguages({ title, items }: AreasProps) {
   const { temaEscuro } = useTheme();
 
@@ -30,7 +34,14 @@ export default function CardLinguages({ title, items }: AreasProps) {
           ${temaEscuro ? "text-white" : "text-[#484A4E]"}
         `}
             >
-              <Icon size={18} />
+              {
+                item.title === "C#" && temaEscuro ?
+                  <Image src={IconCSharpWhite} alt="Icone c#" width={18} />
+                  : item.title === "C#" && !temaEscuro ?
+                    <Image src={IconCSharpGray} alt="Icone c#" width={18} />
+                    :
+                    <Icon size={18} />
+              }
               <span>{item.title}</span>
             </div>
           );
