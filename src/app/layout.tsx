@@ -9,7 +9,7 @@ const montserrat = Montserrat({
   subsets: ["latin"],
 });
 
-export const jetbrainsMono = JetBrains_Mono({
+const jetbrainsMono = JetBrains_Mono({
   subsets: ["latin"],
   variable: "--font-jetbrains-mono",
 });
@@ -27,7 +27,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${montserrat.variable} antialiased ${jetbrainsMono.variable}`}>
+      <body className={`${montserrat.variable} ${jetbrainsMono.variable} antialiased`}>
         <ThemeProvider>
           {children}
         </ThemeProvider>
