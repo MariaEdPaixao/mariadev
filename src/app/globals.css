@@ -1,7 +1,9 @@
 @import "tailwindcss";
 
 @layer base {
-  html, body {
+
+  html,
+  body {
     @apply transition-colors duration-500 min-h-screen;
   }
 
@@ -15,6 +17,10 @@
 
   :root {
     --font-sans: 'Montserrat', sans-serif;
+  }
+
+  .font-jetbrains {
+    font-family: var(--font-jetbrains-mono);
   }
 
   body {
