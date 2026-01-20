@@ -2,7 +2,7 @@ import { Item } from "@/components/about-me/aboutTypes";
 import { AiOutlinePython } from "react-icons/ai";
 import { BsFiletypeSql } from "react-icons/bs";
 import { DiPostgresql } from "react-icons/di";
-import { FaGit, FaJava, FaReact } from "react-icons/fa";
+import { FaJava, FaReact } from "react-icons/fa";
 import { GrOracle } from "react-icons/gr";
 import { IoScanCircleSharp } from "react-icons/io5";
 import { RiTailwindCssFill } from "react-icons/ri";
